@@ -37,7 +37,6 @@ def expand_contractions(text, contraction_mapping):
     return expanded_text
     
     
-from pattern.en import tag
 from nltk.corpus import wordnet as wn
 
 # Annotate text tokens with POS tags
@@ -55,7 +54,7 @@ def pos_tag_text(text):
         else:
             return None
     
-    tagged_text = tag(text)
+    tagged_text = nltk.pos_tag(nltk.word_tokenize(text))
     tagged_lower_text = [(word.lower(), penn_to_wn_tags(pos_tag))
                          for word, pos_tag in
                          tagged_text]
